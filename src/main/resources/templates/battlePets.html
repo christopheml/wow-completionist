@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your pets !</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script>var whTooltips = {colorLinks: false, iconizeLinks: true, renameLinks: false};</script>
+    <script src="https://wow.zamimg.com/widgets/power.js"></script>
+</head>
+<body>
+
+<main role="main" class="container">
+
+    <h1>Pets for <span th:text="${#strings.capitalize(player)}">Malcorne</span> (<span th:text="${#strings.capitalize(realm)}">Hyjal</span>)</h1>
+
+    <div class="starter-template">
+        <div class="progress">
+            <div class="progress-bar" role="progressbar"
+                 th:aria-valuenow="${collected}" aria-valuemin="0" th:aria-valuemax="${total}"
+                 th:style="'width: ' + ${100.0 * collected / total} + '%'">
+                <span th:text="${collected} + '/' + ${total}"></span>
+            </div>
+        </div>
+    </div>
+
+    <h1>Missing pets</h1>
+
+    <div>
+        <th:block th:each="missingPet : ${missingPets}">
+            <a href="#" th:data-wowhead="'npc=' + ${missingPet.creatureId}">
+                <img class="rounded d-inline m-1 border" th:src="'https://render-eu.worldofwarcraft.com/icons/56/' + ${missingPet.icon} + '.jpg'" />
+            </a>
+        </th:block>
+    </div>
+</main>
+
+</body>
+</html>

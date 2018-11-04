@@ -1,0 +1,9 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ specific files
+wow-completionist.iml
+.idea/
+
+# Credentials that should not end up in source control
+credentials.properties
