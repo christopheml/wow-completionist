@@ -33,7 +33,7 @@
 
     <div>
         <th:block th:each="missingPet : ${missingPets}">
-            <a href="#" th:data-wowhead="'npc=' + ${missingPet.creatureId}">
+            <a th:href="'https://www.wowhead.com/npc=' + ${missingPet.creatureId}" th:data-wowhead="'npc=' + ${missingPet.creatureId}">
                 <img class="rounded d-inline m-1 border" th:src="'https://render-eu.worldofwarcraft.com/icons/56/' + ${missingPet.icon} + '.jpg'" />
             </a>
         </th:block>
