@@ -33,7 +33,7 @@ The application has the Europe region hardcoded for now.
 
 ### Battle Pets
 
-URL: `/pets/<realm>/<character>`
-Example: `https://localhost:8080/pets/Hyjal/Giantstone`
+URL: `/<region>/<realm>/<character>/pets`
+Example: `https://localhost:8080/eu/Hyjal/Giantstone/pets`
 
 This page will show you the proportion of pets you have currently collected and a visual view of those missing. 
