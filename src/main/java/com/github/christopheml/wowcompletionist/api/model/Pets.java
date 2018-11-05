@@ -36,6 +36,12 @@ public class Pets {
         return collected.stream().map(Pet::getCreatureId).distinct().count();
     }
 
+
+    public long getTotalCount() {
+        // If this proves to be a performance issue, store the unique collected count value instead of calculating it again.
+        return getUniqueCollectedCount() + uncollectedCount;
+    }
+
     public List<Pet> getCollected() {
         return collected;
     }
