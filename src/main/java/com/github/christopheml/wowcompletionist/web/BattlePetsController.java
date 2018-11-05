@@ -30,14 +30,12 @@ public class BattlePetsController {
         CharacterIdentity characterIdentity = CharacterIdentity.of(region, realm, character);
 
         Pets pets = battlePetsService.fetch(characterIdentity);
+        List<Pet> missingPets = petDatabase.missingPets(pets.getCollected());
 
         model.addAttribute("collected", pets.getUniqueCollectedCount());
         model.addAttribute("total", pets.getTotalCount());
-
-        List<Pet> missingPets = petDatabase.missingPets(pets.getCollected());
         model.addAttribute("missingPets", missingPets);
-        model.addAttribute("realm", realm);
-        model.addAttribute("player", character);
+        model.addAttribute("characterIdentity", characterIdentity);
         return "battlePets";
     }
 

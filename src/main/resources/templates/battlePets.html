@@ -14,7 +14,10 @@
 
 <main role="main" class="container">
 
-    <h1>Pets for <span th:text="${#strings.capitalize(player)}">Malcorne</span> (<span th:text="${#strings.capitalize(realm)}">Hyjal</span>)</h1>
+    <h1>
+        Pets for <span th:text="${#strings.capitalize(characterIdentity.character)}">Malcorne</span>
+        (<span th:text="${#strings.toUpperCase(characterIdentity.region)} + '-' + ${#strings.capitalize(characterIdentity.realm)}">EU-Hyjal</span>)
+    </h1>
 
     <div class="starter-template">
         <div class="progress">
