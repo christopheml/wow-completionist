@@ -1,0 +1,5 @@
+spring:
+  cache:
+    jcache:
+      # Enables EhCache configuration through JCache
+      config: classpath:configuration/ehcache.xml

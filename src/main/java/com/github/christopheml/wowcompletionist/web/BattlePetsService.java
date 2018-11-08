@@ -5,6 +5,7 @@ import com.github.christopheml.wowcompletionist.api.Endpoints;
 import com.github.christopheml.wowcompletionist.api.model.Character;
 import com.github.christopheml.wowcompletionist.api.model.Pets;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +15,11 @@ public class BattlePetsService {
     private final OAuth2RestTemplate restTemplate;
 
     @Autowired
-    public BattlePetsService(OAuth2RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public BattlePetsService(OAuth2RestTemplate blizzardApiRestTemplate) {
+        this.restTemplate = blizzardApiRestTemplate;
     }
 
+    @Cacheable("characterPets")
     public Pets fetch(CharacterIdentity characterIdentity) {
         String endpoint = Endpoints.EUROPE.battlePets(characterIdentity.getRealm(), characterIdentity.getCharacter());
         Character result = restTemplate.getForObject(endpoint, Character.class);
