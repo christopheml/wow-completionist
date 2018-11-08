@@ -2,12 +2,21 @@ package com.github.christopheml.wowcompletionist.api;
 
 import com.github.christopheml.wowcompletionist.Region;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 /**
  * Provides URLs for Blizzard API endpoints.
  */
 public class Endpoints {
 
-    public static final Endpoints EUROPE = new Endpoints(Region.EU);
+    private static final Map<Region, Endpoints> regionalEndpoints = new EnumMap<>(Region.class);
+
+    static {
+        for (Region region : Region.values()) {
+            regionalEndpoints.put(region, new Endpoints(region));
+        }
+    }
 
     private final String baseUrl;
 
@@ -17,6 +26,10 @@ public class Endpoints {
 
     public String battlePets(String realm, String character) {
         return baseUrl + "/wow/character/" + realm + "/" + character + "?fields=pets";
+    }
+
+    public static Endpoints forRegion(Region region) {
+        return regionalEndpoints.get(region);
     }
 
 }

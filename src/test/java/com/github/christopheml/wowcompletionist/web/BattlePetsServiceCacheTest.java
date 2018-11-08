@@ -1,5 +1,6 @@
 package com.github.christopheml.wowcompletionist.web;
 
+import com.github.christopheml.wowcompletionist.Region;
 import com.github.christopheml.wowcompletionist.api.CharacterIdentity;
 import com.github.christopheml.wowcompletionist.api.model.Character;
 import com.github.christopheml.wowcompletionist.api.model.Pets;
@@ -34,7 +35,7 @@ class BattlePetsServiceCacheTest {
     @Test
     void return_value_should_be_cached_after_first_call() {
         when(oAuth2RestTemplate.getForObject(anyString(), eq(Character.class))).thenReturn(sampleCharacter());
-        CharacterIdentity characterIdentity = CharacterIdentity.of("eu", "hyjal", "giantstone");
+        CharacterIdentity characterIdentity = CharacterIdentity.of(Region.EU, "hyjal", "giantstone");
 
         battlePetsService.fetch(characterIdentity);
         battlePetsService.fetch(characterIdentity);

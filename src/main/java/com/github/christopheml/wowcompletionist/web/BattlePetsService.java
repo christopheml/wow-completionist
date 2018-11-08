@@ -21,7 +21,9 @@ public class BattlePetsService {
 
     @Cacheable("characterPets")
     public Pets fetch(CharacterIdentity characterIdentity) {
-        String endpoint = Endpoints.EUROPE.battlePets(characterIdentity.getRealm(), characterIdentity.getCharacter());
+        String endpoint = Endpoints.forRegion(characterIdentity.getRegion())
+                .battlePets(characterIdentity.getRealm(), characterIdentity.getCharacter());
+
         Character result = restTemplate.getForObject(endpoint, Character.class);
 
         if (result == null || result.getPets() == null) {

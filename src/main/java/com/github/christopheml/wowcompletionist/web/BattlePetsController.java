@@ -1,5 +1,6 @@
 package com.github.christopheml.wowcompletionist.web;
 
+import com.github.christopheml.wowcompletionist.Region;
 import com.github.christopheml.wowcompletionist.api.CharacterIdentity;
 import com.github.christopheml.wowcompletionist.api.model.Pet;
 import com.github.christopheml.wowcompletionist.api.model.Pets;
@@ -25,8 +26,9 @@ public class BattlePetsController {
         this.petDatabase = petDatabase;
     }
 
-    @GetMapping("/{region}/{realm}/{character}/pets")
-    public String showBattlePets(@PathVariable String region, @PathVariable String realm, @PathVariable String character, Model model) {
+    @GetMapping("/{regionCode}/{realm}/{character}/pets")
+    public String showBattlePets(@PathVariable String regionCode, @PathVariable String realm, @PathVariable String character, Model model) {
+        Region region = Region.from(regionCode);
         CharacterIdentity characterIdentity = CharacterIdentity.of(region, realm, character);
 
         Pets pets = battlePetsService.fetch(characterIdentity);

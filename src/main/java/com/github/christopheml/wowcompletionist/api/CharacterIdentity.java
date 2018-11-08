@@ -1,6 +1,8 @@
 package com.github.christopheml.wowcompletionist.api;
 
 
+import com.github.christopheml.wowcompletionist.Region;
+
 import java.util.Objects;
 
 /**
@@ -8,23 +10,23 @@ import java.util.Objects;
  */
 public class CharacterIdentity {
 
-    private final String region;
+    private final Region region;
 
     private final String realm;
 
     private final String character;
 
-    private CharacterIdentity(String region, String realm, String character) {
+    private CharacterIdentity(Region region, String realm, String character) {
         this.region = region;
         this.realm = realm;
         this.character = character;
     }
 
-    public static CharacterIdentity of(String region, String realm, String character) {
+    public static CharacterIdentity of(Region region, String realm, String character) {
         return new CharacterIdentity(region, realm, character);
     }
 
-    public String getRegion() {
+    public Region getRegion() {
         return region;
     }
 
