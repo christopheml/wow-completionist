@@ -13,10 +13,10 @@
 
     <cache alias="characterPets">
         <expiry>
-            <ttl>300</ttl>
+            <ttl unit="seconds">300</ttl>
         </expiry>
         <resources>
-            <heap unit="MB">5</heap>
+            <heap unit="entries">20</heap>
         </resources>
     </cache>
 
