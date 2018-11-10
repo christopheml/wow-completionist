@@ -3,7 +3,9 @@ package com.github.christopheml.wowcompletionist.api.reference;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.christopheml.wowcompletionist.Region;
 import com.github.christopheml.wowcompletionist.api.model.Pet;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -22,9 +24,13 @@ import java.util.stream.Collectors;
 @Component
 public class PetDatabase {
 
+    private final PetExclusions petExclusions;
+
     private List<Pet> pets;
 
-    public PetDatabase(@Value("${localData.pets}") String fileLocation) throws IOException {
+    @Autowired
+    public PetDatabase(@Value("${localData.pets}") String fileLocation, PetExclusions petExclusions) throws IOException {
+        this.petExclusions = petExclusions;
         load(fileLocation);
     }
 
@@ -35,12 +41,13 @@ public class PetDatabase {
         pets = objectMapper.readValue(dataFile, new TypeReference<List<Pet>>() {});
     }
 
-    public List<Pet> missingPets(List<Pet> collectedPets) {
+    public List<Pet> missingPets(List<Pet> collectedPets, Region region) {
         Set<Integer> collectedIds = collectedPets.stream()
                 .map(Pet::getCreatureId)
                 .collect(Collectors.toSet());
         return pets.stream()
                 .filter(p -> !collectedIds.contains(p.getCreatureId()))
+                .filter(p -> !petExclusions.isUnavailable(p.getCreatureId(), region))
                 .collect(Collectors.toList());
     }
 
