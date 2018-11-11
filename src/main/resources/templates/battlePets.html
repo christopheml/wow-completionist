@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Your pets !</title>
+    <title th:text="#{battlePets.title}">Your pets !</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
     <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
@@ -14,10 +14,11 @@
 
 <main role="main" class="container">
 
-    <h1>
-        Pets for <span th:text="${#strings.capitalize(characterIdentity.character)}">Malcorne</span>
-        (<span th:text="${#strings.toUpperCase(characterIdentity.region)} + '-' + ${#strings.capitalize(characterIdentity.realm)}">EU-Hyjal</span>)
-    </h1>
+    <h1 th:text="#{battlePets.headline(
+        ${#strings.capitalize(characterIdentity.character)},
+        ${#strings.toUpperCase(characterIdentity.region)},
+        ${#strings.capitalize(characterIdentity.realm)}
+    )}">Pets for Giantstone (EU-Hyjal)</h1>
 
     <div class="starter-template">
         <div class="progress">
@@ -29,7 +30,7 @@
         </div>
     </div>
 
-    <h1>Missing pets</h1>
+    <h1 th:text="#{battlePets.missingPets.title}">Missing pets</h1>
 
     <div>
         <th:block th:each="missingPet : ${missingPets}">
