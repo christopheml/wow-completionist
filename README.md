@@ -27,12 +27,11 @@ java -jar target/wow-completionist-0.0.1-SNAPSHOT.jar
 
 The application will run on port 8080.
 
-## Available endpoints
+## How to use
 
-### Battle Pets
+Open the application at `http://localhost:8080/` (or whatever host you have configured), this will open character selection page.
 
-URL: `/<region>/<realm>/<character>/pets`
-Example: `https://localhost:8080/eu/Hyjal/Giantstone/pets`
+From here, you can navigate to all application modules : 
 
-This page will show you the proportion of pets you have currently collected and a visual view of those missing. 
+* Battle and vanity pets (`http://localhost:8080/<region>/<realm>/<character>/pets`)
 

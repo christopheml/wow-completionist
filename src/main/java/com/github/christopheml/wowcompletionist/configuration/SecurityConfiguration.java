@@ -10,7 +10,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception {
         // Endpoints are all public by default
-        http.authorizeRequests().antMatchers("/").permitAll();
+        http.authorizeRequests()
+                .antMatchers("/**")
+                .permitAll();
+
+        // Allows POST requests without csrf (for character selection)
+        http.csrf()
+                .ignoringAntMatchers("/");
     }
 
 }

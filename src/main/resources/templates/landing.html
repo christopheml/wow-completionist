@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Your pets !</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/signin.css}">
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body class="text-center">
+
+<div class="mx-auto text-center pt-lg-2" style="max-width: 700px">
+    <form class="form-signin" method="post" action="/">
+        <h1 class="h3 mb-3 font-weight-normal">Select a character</h1>
+        <div class="form-group">
+            <label for="regionCodeInput" class="sr-only">Region</label>
+            <select id="regionCodeInput" name="regionCode" class="form-control">
+                <option th:each="region : ${regions}" th:text="${region.name()}" th:value="${#strings.toLowerCase(region.name())}">EU</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="realmInput" class="sr-only">Realm</label>
+            <input type="text" id="realmInput" name="realm" class="form-control" placeholder="Hyjal" required>
+        </div>
+        <div class="form-group">
+            <label for="characterInput" class="sr-only">Realm</label>
+            <input type="text" id="characterInput" name="character" class="form-control" placeholder="Giantstone" required>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Select</button>
+        </div>
+    </form>
+</div>
+
+</body>
