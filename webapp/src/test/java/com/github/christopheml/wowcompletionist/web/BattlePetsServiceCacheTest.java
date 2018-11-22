@@ -1,7 +1,7 @@
 package com.github.christopheml.wowcompletionist.web;
 
-import com.github.christopheml.wowcompletionist.Region;
 import com.github.christopheml.wowcompletionist.api.CharacterIdentity;
+import com.github.christopheml.wowcompletionist.api.Region;
 import com.github.christopheml.wowcompletionist.api.model.Character;
 import com.github.christopheml.wowcompletionist.api.model.Pets;
 import org.junit.jupiter.api.Test;

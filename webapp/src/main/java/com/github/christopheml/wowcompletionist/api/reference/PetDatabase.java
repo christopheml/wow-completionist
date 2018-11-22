@@ -3,7 +3,7 @@ package com.github.christopheml.wowcompletionist.api.reference;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.christopheml.wowcompletionist.Region;
+import com.github.christopheml.wowcompletionist.api.Region;
 import com.github.christopheml.wowcompletionist.api.model.Pet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

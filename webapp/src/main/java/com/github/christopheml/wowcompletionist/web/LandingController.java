@@ -1,7 +1,7 @@
 package com.github.christopheml.wowcompletionist.web;
 
-import com.github.christopheml.wowcompletionist.Region;
 import com.github.christopheml.wowcompletionist.api.CharacterIdentity;
+import com.github.christopheml.wowcompletionist.api.Region;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

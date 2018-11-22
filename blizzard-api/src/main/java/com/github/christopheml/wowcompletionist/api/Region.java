@@ -1,4 +1,4 @@
-package com.github.christopheml.wowcompletionist;
+package com.github.christopheml.wowcompletionist.api;
 
 public enum Region {
 

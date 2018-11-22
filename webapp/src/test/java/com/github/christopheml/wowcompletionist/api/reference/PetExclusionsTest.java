@@ -1,6 +1,6 @@
 package com.github.christopheml.wowcompletionist.api.reference;
 
-import com.github.christopheml.wowcompletionist.Region;
+import com.github.christopheml.wowcompletionist.api.Region;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

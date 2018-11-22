@@ -1,7 +1,5 @@
 package com.github.christopheml.wowcompletionist.api;
 
-import com.github.christopheml.wowcompletionist.Region;
-
 import java.util.EnumMap;
 import java.util.Map;
 

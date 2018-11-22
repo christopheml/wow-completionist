@@ -21,6 +21,7 @@
     </parent>
 
     <modules>
+        <module>blizzard-api</module>
         <module>webapp</module>
     </modules>
 
