@@ -2,8 +2,8 @@ package com.github.christopheml.wowcompletionist.web;
 
 import com.github.christopheml.wowcompletionist.api.CharacterIdentity;
 import com.github.christopheml.wowcompletionist.api.Region;
-import com.github.christopheml.wowcompletionist.api.model.Character;
 import com.github.christopheml.wowcompletionist.api.model.Pets;
+import com.github.christopheml.wowcompletionist.api.services.PetService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
@@ -13,12 +13,11 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.oauth2.client.OAuth2RestTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.util.ReflectionTestUtils;
 
-import static org.mockito.ArgumentMatchers.anyString;
+import java.util.Optional;
+
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
@@ -27,26 +26,20 @@ import static org.mockito.Mockito.*;
 class BattlePetsServiceCacheTest {
 
     @Autowired
-    private OAuth2RestTemplate oAuth2RestTemplate;
+    private PetService petService;
 
     @Autowired
     private BattlePetsService battlePetsService;
 
     @Test
     void return_value_should_be_cached_after_first_call() {
-        when(oAuth2RestTemplate.getForObject(anyString(), eq(Character.class))).thenReturn(sampleCharacter());
         CharacterIdentity characterIdentity = CharacterIdentity.of(Region.EU, "hyjal", "giantstone");
+        when(petService.masterList(eq(characterIdentity))).thenReturn(Optional.of(new Pets()));
 
         battlePetsService.fetch(characterIdentity);
         battlePetsService.fetch(characterIdentity);
 
-        verify(oAuth2RestTemplate, times(1)).getForObject(anyString(), eq(Character.class));
-    }
-
-    private Character sampleCharacter() {
-        Character character = new Character();
-        ReflectionTestUtils.setField(character, "pets", new Pets());
-        return character;
+        verify(petService, times(1)).masterList(eq(characterIdentity));
     }
 
     @Configuration
@@ -59,13 +52,13 @@ class BattlePetsServiceCacheTest {
         }
 
         @Bean
-        OAuth2RestTemplate blizzardApiRestTemplate() {
-            return Mockito.mock(OAuth2RestTemplate.class);
+        PetService petService() {
+            return Mockito.mock(PetService.class);
         }
 
         @Bean
-        BattlePetsService battlePetsService(OAuth2RestTemplate oAuth2RestTemplate) {
-            return new BattlePetsService(oAuth2RestTemplate);
+        BattlePetsService battlePetsService(PetService petService) {
+            return new BattlePetsService(petService);
         }
 
     }
