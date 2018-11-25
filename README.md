@@ -4,14 +4,14 @@
 
 This is an application I built to get my hands on Blizzard's APIs, specifically World of Warcraft APIs.
 
-## How to build
+## How to deploy
 
 ### OAuth2 configuration
 
-You will need to provide a `credentials.properties` file in the `src/main/resources/configuration` directory.
+You need to provide a `client id` and a `client secret` that will authenticate the application with Blizzard's API. 
+The will be read from the environment variables `WC_BLIZZARD_API_CLIENT_ID` and `WC_BLIZZARD_API_CLIENT_SECRET`.
 
-This file should define two properties : `oauth2.clientId` and `oauth2.clientSecret`. These are required for the application
-to authenticate itself with Blizzard's API. You can [generate credentials here](https://develop.battle.net/access/clients).
+You can [generate credentials here](https://develop.battle.net/access/clients) if you need to.
 
 ### Packaging
 
@@ -22,7 +22,7 @@ mvnw clean package
 ## How to run
 
 ```
-java -jar target/wow-completionist-0.0.1-SNAPSHOT.jar
+java -jar webapp/target/webapp-0.0.1-SNAPSHOT.jar
 ```
 
 The application will run on port 8080.
@@ -31,7 +31,6 @@ The application will run on port 8080.
 
 Open the application at `http://localhost:8080/` (or whatever host you have configured), this will open character selection page.
 
-From here, you can navigate to all application modules : 
+From here, you can navigate to existing application modules (currently only one module is supported): 
 
 * Battle and vanity pets (`http://localhost:8080/<region>/<realm>/<character>/pets`)
-

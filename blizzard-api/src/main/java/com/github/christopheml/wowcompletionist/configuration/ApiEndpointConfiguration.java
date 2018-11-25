@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 @Configuration
 @EnableOAuth2Client
-@PropertySource({"classpath:configuration/api.properties", "classpath:configuration/credentials.properties"})
+@PropertySource({"classpath:configuration/api.properties"})
 public class ApiEndpointConfiguration {
 
     @Value("${oauth2.accessTokenUri}")
