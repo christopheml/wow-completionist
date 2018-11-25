@@ -22,7 +22,7 @@ mvnw clean package
 ## How to run
 
 ```
-java -jar webapp/target/webapp-0.0.1-SNAPSHOT.jar
+java -jar webapp/target/wow-completionist.jar
 ```
 
 The application will run on port 8080.
