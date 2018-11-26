@@ -3,3 +3,6 @@ spring:
     jcache:
       # Enables EhCache configuration through JCache
       config: classpath:configuration/ehcache.xml
+server:
+  # Sets the HTTP port from the $PORT environment variable for Heroku or to a default value otherwise
+  port: ${PORT:8080}
