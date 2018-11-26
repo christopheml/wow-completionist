@@ -5,5 +5,5 @@
 *.iml
 .idea/
 
-# Credentials that should not end up in source control
-credentials.properties
+# Sensitive content that should not end up in source control
+.env
