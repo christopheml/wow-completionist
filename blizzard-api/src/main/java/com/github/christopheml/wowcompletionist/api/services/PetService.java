@@ -20,7 +20,7 @@ public class PetService {
         this.restTemplate = blizzardApiRestTemplate;
     }
 
-    public Optional<Pets> masterList(CharacterIdentity characterIdentity) {
+    public Optional<Pets> forCharacter(CharacterIdentity characterIdentity) {
         String endpoint = Endpoints.forRegion(characterIdentity.getRegion())
                 .battlePets(characterIdentity.getRealm(), characterIdentity.getCharacter());
 

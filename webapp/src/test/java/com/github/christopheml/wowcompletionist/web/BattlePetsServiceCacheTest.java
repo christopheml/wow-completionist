@@ -34,12 +34,12 @@ class BattlePetsServiceCacheTest {
     @Test
     void return_value_should_be_cached_after_first_call() {
         CharacterIdentity characterIdentity = CharacterIdentity.of(Region.EU, "hyjal", "giantstone");
-        when(petService.masterList(eq(characterIdentity))).thenReturn(Optional.of(new Pets()));
+        when(petService.forCharacter(eq(characterIdentity))).thenReturn(Optional.of(new Pets()));
 
         battlePetsService.fetch(characterIdentity);
         battlePetsService.fetch(characterIdentity);
 
-        verify(petService, times(1)).masterList(eq(characterIdentity));
+        verify(petService, times(1)).forCharacter(eq(characterIdentity));
     }
 
     @Configuration

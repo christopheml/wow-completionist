@@ -19,7 +19,7 @@ public class BattlePetsService {
 
     @Cacheable("characterPets")
     public Pets fetch(CharacterIdentity characterIdentity) {
-        return petService.masterList(characterIdentity).orElseThrow(() -> new RuntimeException("No pet data found"));
+        return petService.forCharacter(characterIdentity).orElseThrow(() -> new RuntimeException("No pet data found"));
     }
 
 }
