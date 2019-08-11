@@ -7,7 +7,7 @@ public class Endpoints {
 
     private final String baseUrl;
 
-    Endpoints(String baseUrl) {
+    public Endpoints(String baseUrl) {
         this.baseUrl = baseUrl;
     }
 
