@@ -1,7 +1,7 @@
 package com.github.christopheml.wowcompletionist.api.services;
 
 import com.github.christopheml.wowcompletionist.api.CharacterIdentity;
-import com.github.christopheml.wowcompletionist.api.Endpoints;
+import com.github.christopheml.wowcompletionist.api.EndpointsResolver;
 import com.github.christopheml.wowcompletionist.api.model.Character;
 import com.github.christopheml.wowcompletionist.api.model.Pets;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,16 @@ public class PetService {
 
     private final RestTemplate restTemplate;
 
+    private final EndpointsResolver endpointsResolver;
+
     @Autowired
-    public PetService(RestTemplate blizzardApiRestTemplate) {
+    public PetService(RestTemplate blizzardApiRestTemplate, EndpointsResolver endpointsResolver) {
         this.restTemplate = blizzardApiRestTemplate;
+        this.endpointsResolver = endpointsResolver;
     }
 
     public Optional<Pets> forCharacter(CharacterIdentity characterIdentity) {
-        String endpoint = Endpoints.forRegion(characterIdentity.getRegion())
+        String endpoint = endpointsResolver.forRegion(characterIdentity.getRegion())
                 .characterBattlePets(characterIdentity.getRealm(), characterIdentity.getCharacter());
 
         Character characterData = restTemplate.getForObject(endpoint, Character.class);
