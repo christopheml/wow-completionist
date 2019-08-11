@@ -7,10 +7,10 @@ class EndpointsTest {
 
     @Test
     void battlePetsEndpoint() {
-        Assertions.assertThat(Endpoints.forRegion(Region.EU).battlePets("Hyjal", "Giantstone"))
+        Assertions.assertThat(Endpoints.forRegion(Region.EU).characterBattlePets("Hyjal", "Giantstone"))
                 .isEqualTo("https://eu.api.blizzard.com/wow/character/Hyjal/Giantstone?fields=pets");
 
-        Assertions.assertThat(Endpoints.forRegion(Region.US).battlePets("Stormrage", "Ryken"))
+        Assertions.assertThat(Endpoints.forRegion(Region.US).characterBattlePets("Stormrage", "Ryken"))
                 .isEqualTo("https://us.api.blizzard.com/wow/character/Stormrage/Ryken?fields=pets");
     }
 

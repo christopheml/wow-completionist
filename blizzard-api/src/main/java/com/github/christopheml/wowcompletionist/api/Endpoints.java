@@ -22,7 +22,7 @@ public class Endpoints {
         baseUrl = "https://" + region.name().toLowerCase() + ".api.blizzard.com";
     }
 
-    public String battlePets(String realm, String character) {
+    public String characterBattlePets(String realm, String character) {
         return baseUrl + "/wow/character/" + realm + "/" + character + "?fields=pets";
     }
 

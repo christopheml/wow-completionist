@@ -22,7 +22,7 @@ public class PetService {
 
     public Optional<Pets> forCharacter(CharacterIdentity characterIdentity) {
         String endpoint = Endpoints.forRegion(characterIdentity.getRegion())
-                .battlePets(characterIdentity.getRealm(), characterIdentity.getCharacter());
+                .characterBattlePets(characterIdentity.getRealm(), characterIdentity.getCharacter());
 
         Character characterData = restTemplate.getForObject(endpoint, Character.class);
         if (characterData == null || characterData.getPets() == null) {
