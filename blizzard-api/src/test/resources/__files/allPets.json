@@ -1,0 +1,100 @@
+{
+  "pets": [
+    {
+      "canBattle": true,
+      "creatureId": 143175,
+      "name": "Abyssal Eel",
+      "family": "water",
+      "icon": "inv_seaeel_teal",
+      "qualityId": 3,
+      "stats": {
+        "speciesId": 2403,
+        "breedId": 3,
+        "petQualityId": 1,
+        "level": 1,
+        "health": 145,
+        "power": 10,
+        "speed": 9
+      },
+      "strongAgainst": [
+        "elemental"
+      ],
+      "typeId": 8,
+      "weakAgainst": [
+        "magical"
+      ]
+    },
+    {
+      "canBattle": true,
+      "creatureId": 90202,
+      "name": "Abyssius",
+      "family": "magical",
+      "icon": "inv_pet_abyssal_blue",
+      "qualityId": 3,
+      "stats": {
+        "speciesId": 1624,
+        "breedId": 3,
+        "petQualityId": 1,
+        "level": 1,
+        "health": 147,
+        "power": 9,
+        "speed": 9
+      },
+      "strongAgainst": [
+        "flying"
+      ],
+      "typeId": 5,
+      "weakAgainst": [
+        "mechanical"
+      ]
+    },
+    {
+      "canBattle": true,
+      "creatureId": 143200,
+      "name": "Accursed Hexxer",
+      "family": "magical",
+      "icon": "inv_tikiman2_bloodtroll",
+      "qualityId": 3,
+      "stats": {
+        "speciesId": 2420,
+        "breedId": 3,
+        "petQualityId": 1,
+        "level": 1,
+        "health": 145,
+        "power": 10,
+        "speed": 9
+      },
+      "strongAgainst": [
+        "flying"
+      ],
+      "typeId": 5,
+      "weakAgainst": [
+        "mechanical"
+      ]
+    },
+    {
+      "canBattle": true,
+      "creatureId": 154693,
+      "name": "Adventurous Hopling",
+      "family": "humanoid",
+      "icon": "inv_misc_coinbag15",
+      "qualityId": 3,
+      "stats": {
+        "speciesId": 2755,
+        "breedId": 3,
+        "petQualityId": 1,
+        "level": 1,
+        "health": 149,
+        "power": 10,
+        "speed": 9
+      },
+      "strongAgainst": [
+        "dragonkin"
+      ],
+      "typeId": 0,
+      "weakAgainst": [
+        "beast"
+      ]
+    }
+  ]
+}
