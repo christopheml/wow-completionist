@@ -1,0 +1,8 @@
+spring:
+  devtools:
+    restart:
+      # Allows hot reload of Thymeleaf templates and string bundles
+      additional-paths:
+        - /resources/templates/**
+        - /resources/i18n
+        - /resources/static/**
