@@ -23,6 +23,7 @@
     <modules>
         <module>blizzard-api</module>
         <module>webapp</module>
+        <module>knowledge-base</module>
     </modules>
 
     <properties>

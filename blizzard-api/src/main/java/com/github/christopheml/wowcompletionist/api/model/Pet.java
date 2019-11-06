@@ -42,4 +42,14 @@ public class Pet {
         return canBattle;
     }
 
+    public static Pet of(int creatureId, int qualityId, String name, String icon, boolean canBattle) {
+        Pet p = new Pet();
+        p.creatureId = creatureId;
+        p.qualityId = qualityId;
+        p.name = name;
+        p.icon = icon;
+        p.canBattle = canBattle;
+        return p;
+    }
+
 }
